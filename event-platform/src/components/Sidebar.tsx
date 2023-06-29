@@ -25,7 +25,6 @@ interface GetLessonsQueryResponse {
 
 export function Sidebar() {
   const { data } = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY)
-  console.log(data)
 
   return (
     <aside className="w-[348px] bg-gray-700 p-6 border-l border-gray-600">
@@ -38,9 +37,9 @@ export function Sidebar() {
             <Lesson
               key={lesson.id}
               title={lesson.title}
-              slug="aula-01"
-              availableAt={new Date()}
-              type="class"
+              slug={lesson.slug}
+              availableAt={new Date(lesson.availableAt)}
+              type={lesson.lessonType}
             />
           )
         })}
